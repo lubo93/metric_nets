@@ -89,11 +89,6 @@ st.markdown(
 fig, axs = plt.subplots(1,2, figsize=(5, 2.5))
 
 axs[0].plot(k_values,inv_condition_numbers,lw=1,color='k')
-axs[0].set_xlim(0,20)
-axs[0].set_ylim(0,0.4)
-axs[0].xaxis.set_minor_locator(ticker.MultipleLocator(1))
-axs[0].yaxis.set_minor_locator(ticker.MultipleLocator(0.025))
-axs[0].yaxis.set_major_locator(ticker.MultipleLocator(0.1))
 
 st.pyplot(fig)
 
