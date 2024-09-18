@@ -87,6 +87,12 @@ st.markdown(
     """
 )
 
+fig, axs = plt.subplots(1,2, figsize=(5, 2.5))
+
+axs[0].plot(k_values,inv_condition_numbers,lw=1,color='k')
+
+st.pyplot(fig)
+
 st.subheader("Making Wave Numbers Audible")
 
 st.markdown(
