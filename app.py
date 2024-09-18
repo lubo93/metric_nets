@@ -95,7 +95,6 @@ axs[0].xaxis.set_minor_locator(ticker.MultipleLocator(1))
 axs[0].yaxis.set_minor_locator(ticker.MultipleLocator(0.025))
 axs[0].yaxis.set_major_locator(ticker.MultipleLocator(0.1))
 
-plt.tight_layout()
 st.pyplot(fig)
 
 st.subheader("Making Wave Numbers Audible")
