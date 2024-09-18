@@ -3,3 +3,4 @@ matplotlib
 networkx
 scipy
 streamlit
+git+https://github.com/yig/PySPQR.git
