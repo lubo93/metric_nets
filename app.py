@@ -87,31 +87,7 @@ st.markdown(
     """
 )
 
-fig, axs = plt.subplots(1,2, figsize=(5, 2.5))
-
-axs[0].plot(k_values,inv_condition_numbers,lw=1,color='k')
-axs[0].set_xlim(0,20)
-axs[0].set_ylim(0,0.4)
-axs[0].xaxis.set_minor_locator(ticker.MultipleLocator(1))
-axs[0].yaxis.set_minor_locator(ticker.MultipleLocator(0.025))
-axs[0].yaxis.set_major_locator(ticker.MultipleLocator(0.1))
-#axs[0].set_xlabel(r"$k$")
-#axs[0].set_ylabel(r"$\kappa(T(k))^{-1}$")
-
-axs[1].plot(k_values, [len(k_opt_vals_unique_multiplicity[k_opt_vals_unique_multiplicity <= k]) for k in k_values],lw=1,color="k")
-#axs[1].plot(k_values, 3/np.pi*k_values,lw=1,color="k",ls=(0, (5, 1)),label=r"$\frac{k\mathcal{L}}{\pi}$")
-#axs[1].plot(k_values, 3/np.pi*k_values+4,lw=1,color="Gray",ls=(0, (3, 1, 1, 1, 1, 1)),label=r"$\frac{k\mathcal{L}}{\pi}+N$")
-#axs[1].plot(k_values, 3/np.pi*k_values-3,lw=1,color="Gray",ls=(0, (3, 1, 1, 1)),label=r"$\frac{k\mathcal{L}}{\pi}-M$")
-axs[1].set_xlim(0,20)
-axs[1].set_ylim(0,40)
-axs[1].xaxis.set_minor_locator(ticker.MultipleLocator(2))
-axs[1].yaxis.set_minor_locator(ticker.MultipleLocator(2.5))
-axs[1].yaxis.set_major_locator(ticker.MultipleLocator(10))
-#axs[1].set_xlabel(r"$k$")
-#axs[1].set_ylabel(r"$N_{\mathcal{G}}(k)$")
-axs[1].legend(loc=0,frameon=False,handlelength=1.4)
-
-plt.tight_layout()
+fig = plt.figure(figsize=(8,8))
 st.pyplot(fig)
 
 st.subheader("Making Wave Numbers Audible")
