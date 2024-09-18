@@ -3,7 +3,7 @@ from scipy.sparse.linalg import svds
 from scipy.sparse import csr_matrix
 from scipy.linalg import det
 from scipy.optimize import minimize_scalar
-from sparseqr import qr
+from scipy.sparse.linalg import svds
 
 def get_edges_per_node(graph):
     """
@@ -315,14 +315,18 @@ def calculate_k_multiplicity(k_opt_vals_unique,
     for k_m in k_opt_vals_unique:
         M_k = generate_matrix_M(k_m, graph, node_edges_in, node_edges_out)
         #sM_k = csr_matrix(M_k)
-        Q, R, _, rank = qr(M_k.T)
+        # Perform sparse SVD on M_k with k singular values
+        u, s, vt = svds(M_k.T, k=min(M_k.shape)-1, which="SM")
 
-        zero_singular_indices = np.where(np.isclose(np.abs(R.diagonal()), 0, atol=tolerance))[0]
+        # Identify the indices of singular values that are close to zero
+        zero_singular_indices = np.where(np.isclose(s, 0, atol=tolerance))[0]
+
+        # Extend the list with the current value of k_m based on zero singular values' multiplicity
         k_opt_vals_unique_multiplicity.extend(len(zero_singular_indices) * [k_m])
-        
+
+        # For each index of zero singular values, extract the corresponding row of V^T
         for i in zero_singular_indices:
-            VT = Q.tocsc()[:,i]
-            VT = VT.toarray().T[0]
+            VT = vt[i, :]
             eig_vals.append(VT)
     
     k_opt_vals_unique_multiplicity = np.array(k_opt_vals_unique_multiplicity)
