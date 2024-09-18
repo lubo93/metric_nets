@@ -95,10 +95,10 @@ axs[0].set_ylim(0,0.4)
 axs[0].xaxis.set_minor_locator(ticker.MultipleLocator(1))
 axs[0].yaxis.set_minor_locator(ticker.MultipleLocator(0.025))
 axs[0].yaxis.set_major_locator(ticker.MultipleLocator(0.1))
-axs[0].set_xlabel(r"$k$")
-axs[0].set_ylabel(r"$\kappa(T(k))^{-1}$")
+#axs[0].set_xlabel(r"$k$")
+#axs[0].set_ylabel(r"$\kappa(T(k))^{-1}$")
 
-plt.tight_layout()
+#plt.tight_layout()
 st.pyplot(fig)
 
 st.subheader("Making Wave Numbers Audible")
