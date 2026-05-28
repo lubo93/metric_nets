@@ -165,7 +165,7 @@ def inv_condition_number_sparse(k,
     Returns:
         float: Inverse condition number of the matrix M_k.
     """
-    k = float(k)
+    k = np.asarray(k).item()
     M_k = generate_matrix_M(k, graph, node_edges_in, node_edges_out)
 
     # Calculate the singular values using SVDs
